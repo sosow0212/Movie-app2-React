@@ -23,7 +23,7 @@ function LandingPage() {
       .then(response => {
         console.log(response)
         setMovies([...Movies, ...response.results]);
-        setMainMovieImage(response.results[0]);
+        setMainMovieImage(response.results[0]); // 상단 메인 이미지는 현재 최고 인기 영화의 이미지임
         setCurrentPage(response.page);
       })
   }
@@ -56,6 +56,7 @@ function LandingPage() {
             Movies.map((movie, index) => (
               <React.Fragment key={index}>
                 <GridCards 
+                  landingPage
                   image={movie.poster_path ?
                     `${IMAGE_BASE_URL}w500${movie.poster_path}` : null}
                     movieId={movie.id}
